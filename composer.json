@@ -1,0 +1,51 @@
+{
+    "name": "slub/dm-ont",
+    "type": "typo3-cms-extension",
+    "description": "This extension provides the functionality of the database developed in the course of the DFG project Geschmacksbildung und Verlagspolitik.",
+    "authors": [
+        {
+            "name": "Matthias Richter",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^11",
+        "fluidtypo3/vhs": "^6",
+        "slub/dm-norm": "dev-main",
+        "illuminate/collections": "^8"
+    },
+    "config": {
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "typo3/testing-framework": "^4.11.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Slub\\DmOnt\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Slub\\DmOnt\\Tests\\": "Tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "TYPO3\\TestingFramework\\Composer\\ExtensionTestEnvironment::prepare"
+        ]
+    },
+    "replace": {
+        "slub/dmont": "self.version",
+        "typo3-ter/dmont": "self.version"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "dm_ont",
+            "ignore-as-root": false,
+            "web-dir": ".Build/Web"
+        }
+    }
+}

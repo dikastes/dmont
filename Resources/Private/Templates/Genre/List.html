@@ -1,0 +1,169 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <div class="jumbotron">
+        <h1> Begriffssystem Genres </h1>
+
+        <f:if condition="{mvdbGenres.0}">
+            <f:then>
+                <div id="data">
+                    <f:alias map="{l: '{', r: '}'}">
+                        [
+                            <f:for each="{mvdbGenres}" as="mvdbGenre" iteration="iterator">
+                                {l}
+                                    "name": "{mvdbGenre.name}",
+                                    "gndId": "{mvdbGenre.gndId}",
+                                    "baseLevel": "{mvdbGenre.baseLevel}",
+                                    "root": "{mvdbGenre.root}",
+                                    "superItem": "{mvdbGenre.superGenre.gndId}",
+                                    "linked": "{mvdbGenre.linked}"
+                                {r}
+                                <f:if condition="!{iterator.isLast}">,</f:if>
+                            </f:for>
+                        ]
+                    </f:alias>
+                </div>
+                <div id="show-links">
+                    <f:for each="{mvdbGenres}" as="mvdbGenre" iteration="iterator">
+                        <f:link.action action="show" target="_blank" arguments="{mvdbGenre:mvdbGenre}" />,
+                    </f:for>
+                </div>
+                <f:link.action action="flush" class="btn btn-danger"> Begriffssystem löschen </f:link.action>
+
+                <f:if condition="!{implemented}">
+                    <h2> Spezialknoten auszeichnen </h2>
+
+                    <h3> Kammermusik-Knoten </h3>
+                    <div class="w-50 pull-left">
+                        <f:form action="setChamberMusic" object="{mvdbInstrument}" class="form pull-left w-50" >
+                            <div class="input-group my-3 w-100">
+                                <span class="input-group-addon"> GND-IDs </span>
+                                <f:form.textfield property="ids" name="ids" id="formfield-chambermusic" class="form-control" value="{chambermusicNodes}" />
+                            </div>
+                            <p id="chambermusic-names"></p>
+                            <a class="btn btn-success" id="select-chambermusic"> auswählen </a>
+                            <a class="btn btn-info" id="clear-chambermusic"> leeren </a>
+                            <f:form.button class="btn btn-danger"> setzen </f:form.button>
+                        </f:form>
+                    </div>
+                    <div class="w-50 pull-right">
+                        Es sollten alle Knoten ausgezeichnet werden, die Kammermusik bezeichnen, wie Duo, Duett, Trio, Terzett, Quartett etc.
+                        Anhand dieser Knoten werden Instrumentierungen in Kammerensembles und andere Ensembles unterschieden.
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <a id="implement-btn" class="btn btn-warning"> Begriffssystem implementieren </a>
+                </f:if>
+                <h1> Übersicht Werkverbindungen </h1>
+
+                <a id="continue-implement-btn" class="btn btn-warning"> nachimplementieren </a>
+                <div id="links">
+                    <f:alias map="{l: '{', r: '}'}">
+                        [
+                            <f:for each="{links}" as="link" iteration="iterator">
+                                {l}
+                                    "gndId": "{link.work}",
+                                    "gndGenreIds":
+                                        [
+                                            <f:for each="{link.gnd_links}" as="gnd_link" iteration="gnd_iterator">
+                                                "{gnd_link}"
+                                                <f:if condition="!{gnd_iterator.isLast}">,</f:if>
+                                            </f:for>
+                                        ],
+                                    "mappedIds": 
+                                        [
+                                            <f:for each="{link.mapped_ids}" as="mapped_id" iteration="id_iterator">
+                                                "{mapped_id}"
+                                                <f:if condition="!{id_iterator.isLast}">,</f:if>
+                                            </f:for>
+                                        ],
+                                    "mvdbGenreId": 
+                                        [
+                                            <f:for each="{link.mvdb_links}" as="mvdb_link" iteration="mvdb_iterator">
+                                                "{mvdb_link}"
+                                                <f:if condition="!{mvdb_iterator.isLast}">,</f:if>
+                                            </f:for>
+                                        ],
+                                    "implementLink": "<f:link.action action="linkMvdbGenre" class="link-href" controller="Work" arguments="{workId:link.work}" />",
+                                    "editLink": "<f:link.action action="edit" class="edit-href" controller="Work" arguments="{workId:link.work}" />"
+                                {r}
+                                <f:if condition="!{iterator.isLast}">,</f:if>
+                            </f:for>
+                        ]
+                    </f:alias>
+                </div>
+
+                <f:if condition="{implemented}">
+                    <h2> Listen </h2>
+
+                    <div class="jumbotron row">
+                        <div class="col">
+                            <h3> Mapping-Liste </h3>
+                            <div class="list-group list-mapping">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3> Fehler-Liste </h3>
+                            <div class="list-group list-error">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </f:if>
+
+            </div>
+            </f:then>
+            <f:else>
+                <h2> Begriffssystem importieren </h2>
+                <f:form action="import" object="{mvdbGenre}" class="form pull-left w-50" >
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Dateiname </span>
+                        <f:form.textfield property="filename" name="filename" class="form-control" value="mvdb_genres.csv" />
+                    </div>
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Bezeichner Unterbegriff </span>
+                        <f:form.textfield property="subString" name="subString" class="form-control" value="sub" />
+                    </div>
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Bezeichner Überbegriff </span>
+                        <f:form.textfield property="superString" name="superString" class="form-control" value="super" />
+                    </div>
+                    <!--
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Bezeichner Baselevel </span>
+                        <f:form.textfield property="baseLevelString" name="baseLevelString" class="form-control" value="baselevel" />
+                    </div>
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> GND Wurzelobjekt </span>
+                        <f:form.textfield property="idRoot" name="idRoot" class="form-control" value="4040802-4" />
+                    </div>
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Bezeichner Wurzelobjekt </span>
+                        <f:form.textfield property="nameRoot" name="nameRoot" class="form-control" value="Musik" />
+                    </div>
+                    -->
+                    <f:form.button class="btn btn-danger"> importieren </f:form.button>
+                    <!--<f:link.action action="export" class="btn btn-success"> exportieren </f:link.action>-->
+                </f:form>
+                <div class="pull-right w-25 m-3">
+                    Die Dateien werden über den Typo3-Dateimanager hochgeladen.
+                    Jede Werk-Genre-Verbindung wird als farbiges Quadrat dargestellt.
+                    Blaue Quadrate sind ausstehende Aktualisierungen.
+                    Grüne Quadrate stehen für erfolgreich hergestellte Verbindungen.
+                    Gelbe Quadrate stehen für GND-Verknüpfungen, die in der Ontologie nicht vorkommen, aber einen Unterbegriff eines in der Ontologie vorhandenen Begriffs darstellen.
+                    Rote Quadrate stehen für GND-Verknüpfungen, die nicht in die Ontologie aufgelöst werden können.
+                    Schwarze Quadrate stehen für Fehler im Verknüpfungsprozess.
+                </div>
+                <div class="clearfix"></div>
+            </f:else>
+        </f:if>
+
+
+    <f:be.pageRenderer includeRequireJsModules="{
+        0:'TYPO3/CMS/PublisherDb/MvdbGraph'
+        }" />
+
+</f:section>
+</html>

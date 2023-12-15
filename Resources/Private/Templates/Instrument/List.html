@@ -1,0 +1,194 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+
+    <div class="jumbotron">
+        <h1> Begriffssystem Instrumente </h1>
+
+        <f:if condition="{mvdbInstruments.0}">
+            <f:then>
+                <div id="data">
+                    <f:alias map="{l: '{', r: '}'}">
+                        [
+                            <f:for each="{mvdbInstruments}" as="mvdbInstrument" iteration="iterator">
+                                {l}
+                                    "name": "{mvdbInstrument.name}",
+                                    "gndId": "{mvdbInstrument.gndId}",
+                                    "baseLevel": "{mvdbInstrument.baseLevel}",
+                                    "root": "{mvdbInstrument.root}",
+                                    "superItem": "{mvdbInstrument.superInstrument.gndId}",
+                                    "linked": "{mvdbInstrument.linked}"
+                                {r}
+                                <f:if condition="!{iterator.isLast}">,</f:if>
+                            </f:for>
+                        ]
+                    </f:alias>
+                </div>
+                <div id="show-links">
+                    <f:for each="{mvdbInstruments}" as="mvdbInstrument" iteration="iterator">
+                        <f:link.action action="show" arguments="{mvdbInstrument:mvdbInstrument}" />
+                    </f:for>
+                </div>
+                <f:link.action action="flush" class="btn btn-danger"> Begriffssystem löschen </f:link.action>
+
+                <f:if condition="!{implemented}">
+                    <h2> Spezialknoten auszeichnen </h2>
+
+                    <h3> Ensemble-Knoten </h3>
+                    <div class="w-50 pull-left">
+                        <f:form action="setEnsemble" object="{mvdbInstrument}" class="form pull-left w-50" >
+                            <div class="input-group my-3 w-100">
+                                <span class="input-group-addon"> GND-IDs </span>
+                                <f:form.textfield property="ids" name="ids" id="formfield-ensemble" class="form-control" value="{ensembleNodes}" />
+                            </div>
+                            <p id="ensemble-names"></p>
+                            <a class="btn btn-success" id="select-ensemble"> auswählen </a>
+                            <a class="btn btn-info" id="clear-ensemble"> leeren </a>
+                            <f:form.button class="btn btn-danger"> setzen </f:form.button>
+                        </f:form>
+                    </div>
+                    <div class="w-50 pull-right">
+                        Es sollten alle Knoten ausgezeichnet werden, die Ensembles bezeichnen, wie Orchester und Chor.
+                        Anhand dieser Knoten werden die Namensfelder 'Orchester' und 'Chor' belegt.
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <h3> Stimmen-Knoten </h3>
+                    <div class="w-50 pull-left">
+                        <f:form action="setVoice" object="{mvdbInstrument}" class="form pull-left w-50" >
+                            <div class="input-group my-3 w-100">
+                                <span class="input-group-addon"> GND-IDs </span>
+                                <f:form.textfield property="ids" name="ids" id="formfield-voice" class="form-control" value="{voiceNodes}" />
+                            </div>
+                            <p id="ensemble-names"></p>
+                            <a class="btn btn-success" id="select-voice"> auswählen </a>
+                            <a class="btn btn-info" id="clear-voice"> leeren </a>
+                            <f:form.button class="btn btn-danger"> setzen </f:form.button>
+                        </f:form>
+                    </div>
+                    <div class="w-50 pull-right">
+                        Es sollten alle Vokalstimmen sowie Chor ausgezeichnet werden.
+                        Diese Knoten werden als Vokalsolisten oder Chor besonders behandelt.
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <h3> Ignorieren-Knoten </h3>
+                    <div class="w-50 pull-left">
+                        <f:form action="setIgnoreInNames" object="{mvdbInstrument}" class="form pull-left w-50" >
+                            <div class="input-group my-3 w-100">
+                                <span class="input-group-addon"> GND-IDs </span>
+                                <f:form.textfield property="ids" name="ids" id="formfield-ignore" class="form-control" value="{ignoreNodes}" />
+                            </div>
+                            <p id="ensemble-names"></p>
+                            <a class="btn btn-success" id="select-ignore"> auswählen </a>
+                            <a class="btn btn-info" id="clear-ignore"> leeren </a>
+                            <f:form.button class="btn btn-danger"> setzen </f:form.button>
+                        </f:form>
+                    </div>
+                    <div class="w-50 pull-right">
+                        Es sollten alle Schlaginstrumente sowie Basso Continuo aufgeführt sein.
+                        Diese Knoten werden bei der Ensemblebenennung ignoriert, sodass bspw. ein Ensemble aus Streichinstrumenten mit Schlagwerk nicht als 'gemischtes Ensemble', sondern als 'Streichensemble' benannt wird.
+                    </div>
+                    <div class="clearfix"></div>
+                    <a id="implement-btn" class="btn btn-warning"> implementieren </a>
+                </f:if>
+
+                <h1> Übersicht Werkverbindungen </h1>
+
+                <a id="continue-implement-btn" class="btn btn-warning"> nachimplementieren </a>
+                <div id="links">
+                    <f:alias map="{l: '{', r: '}'}">
+                        [
+                            <f:for each="{links}" as="link" iteration="iterator">
+                                {l}
+                                    "gndId": "{link.work}",
+                                    "gndInstrumentIds":
+                                        [
+                                            <f:for each="{link.gnd_links}" as="gnd_link" iteration="gnd_iterator">
+                                                "{gnd_link}"
+                                                <f:if condition="!{gnd_iterator.isLast}">,</f:if>
+                                            </f:for>
+                                        ],
+                                    "mappedIds": 
+                                        [
+                                            <f:for each="{link.mapped_ids}" as="mapped_id" iteration="id_iterator">
+                                                "{mapped_id}"
+                                                <f:if condition="!{id_iterator.isLast}">,</f:if>
+                                            </f:for>
+                                        ],
+                                    "mvdbInstrumentId": 
+                                        [
+                                            <f:for each="{link.mvdb_links}" as="mvdb_link" iteration="mvdb_iterator">
+                                                "{mvdb_link}"
+                                                <f:if condition="!{mvdb_iterator.isLast}">,</f:if>
+                                            </f:for>
+                                        ],
+                                    "implementLink": "<f:link.action action="linkMvdbInstrumentation" class="link-href" controller="Work" arguments="{workId:link.work}" />",
+                                    "editLink": "<f:link.action action="edit" class="edit-href" controller="Work" arguments="{workId:link.work}" />"
+                                {r}
+                                <f:if condition="!{iterator.isLast}">,</f:if>
+                            </f:for>
+                        ]
+                    </f:alias>
+                </div>
+
+                <f:if condition="{implemented}">
+                    <h2> Listen </h2>
+
+                    <a id="continue-implement-btn" class="btn btn-warning"> nachimplementieren </a>
+                    <div class="jumbotron row">
+                        <div class="col">
+                            <h3> Mapping-Liste </h3>
+                            <div class="list-group list-mapping">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3> Fehler-Liste </h3>
+                            <div class="list-group list-error">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </f:if>
+            </f:then>
+
+            <f:else>
+                <h2> Begriffssystem importieren </h2>
+                <f:form action="import" object="{mvdbInstrument}" class="form pull-left w-50" >
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Dateiname </span>
+                        <f:form.textfield property="filename" name="filename" class="form-control" value="mvdb_instruments.csv" />
+                    </div>
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Bezeichner Unterbegriff </span>
+                        <f:form.textfield property="subString" name="subString" class="form-control" value="sub" />
+                    </div>
+                    <div class="input-group my-3 w-100">
+                        <span class="input-group-addon w-25"> Bezeichner Überbegriff </span>
+                        <f:form.textfield property="superString" name="superString" class="form-control" value="super" />
+                    </div>
+                    <f:form.button class="btn btn-danger"> importieren </f:form.button>
+                    <!--<f:link.action action="export" class="btn btn-success"> exportieren </f:link.action>-->
+                </f:form>
+                <div class="pull-right w-25 m-3">
+                    Die Dateien werden über den Typo3-Dateimanager hochgeladen.
+                    Jede Werk-Instrument-Verbindung wird als farbiges Quadrat dargestellt.
+                    Blaue Quadrate sind ausstehende Aktualisierungen.
+                    Grüne Quadrate stehen für erfolgreich hergestellte Verbindungen.
+                    Gelbe Quadrate stehen für GND-Verknüpfungen, die in der Ontologie nicht vorkommen, aber einen Unterbegriff eines in der Ontologie vorhandenen Begriffs darstellen.
+                    Rote Quadrate stehen für GND-Verknüpfungen, die nicht in die Ontologie aufgelöst werden können.
+                    Schwarze Quadrate stehen für Fehler im Verknüpfungsprozess.
+                </div>
+                <div class="clearfix"></div>
+            </f:else>
+
+        </f:if>
+    </div>
+
+    <f:be.pageRenderer includeRequireJsModules="{
+        0:'TYPO3/CMS/PublisherDb/MvdbGraph'
+        }" />
+
+</f:section>
+</html>

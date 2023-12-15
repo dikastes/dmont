@@ -1,0 +1,14 @@
+# Module configuration
+module.tx_dmont_tools_publisherdbadmin {
+    persistence {
+        storagePid = {$module.tx_dmont_admin.persistence.storagePid}
+    }
+    view {
+        templateRootPaths.0 = EXT:dmont/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_dmont_admin.view.templateRootPath}
+        partialRootPaths.0 = EXT:dmont/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_dmont_admin.view.partialRootPath}
+        layoutRootPaths.0 = EXT:dmont/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_dmont_admin.view.layoutRootPath}
+    }
+}
