@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument',
+        'title' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,7 +17,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'name,gnd_id,shorthand,mapped_ids',
-        'iconfile' => 'EXT:publisher_db/Resources/Public/Icons/tx_publisherdb_domain_model_mvdbinstrument.gif'
+        'iconfile' => 'EXT:dmont/Resources/Public/Icons/tx_publisherdb_domain_model_mvdbinstrument.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, gnd_id, shorthand, base_level, root, mapped_ids, linked, ensemble, voice, ignore_in_name, super_instrument',
@@ -118,7 +118,7 @@ return [
 
         'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.name',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -127,7 +127,7 @@ return [
         ],
         'gnd_id' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.gnd_id',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.gnd_id',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -136,7 +136,7 @@ return [
         ],
         'shorthand' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.shorthand',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.shorthand',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -145,7 +145,7 @@ return [
         ],
         'base_level' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.base_level',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.base_level',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -158,7 +158,7 @@ return [
         ],
         'root' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.root',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.root',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -171,7 +171,7 @@ return [
         ],
         'mapped_ids' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.mapped_ids',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.mapped_ids',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -181,7 +181,7 @@ return [
         ],
         'linked' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.linked',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.linked',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -194,7 +194,7 @@ return [
         ],
         'ensemble' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.ensemble',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.ensemble',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -207,7 +207,7 @@ return [
         ],
         'voice' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.voice',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.voice',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -220,7 +220,7 @@ return [
         ],
         'ignore_in_name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.ignore_in_name',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.ignore_in_name',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -233,7 +233,7 @@ return [
         ],
         'super_instrument' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.super_instrument',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrument.super_instrument',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

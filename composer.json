@@ -1,7 +1,7 @@
 {
     "name": "slub/dm-ont",
     "type": "typo3-cms-extension",
-    "description": "This extension provides the functionality of the database developed in the course of the DFG project Geschmacksbildung und Verlagspolitik.",
+    "description": "The Dresden module for ontology management",
     "authors": [
         {
             "name": "Matthias Richter",

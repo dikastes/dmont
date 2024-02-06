@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre',
+        'title' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,7 +17,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'name,gnd_id,mapped_ids',
-        'iconfile' => 'EXT:publisher_db/Resources/Public/Icons/tx_publisherdb_domain_model_mvdbgenre.gif'
+        'iconfile' => 'EXT:dmont/Resources/Public/Icons/tx_publisherdb_domain_model_mvdbgenre.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, gnd_id, base_level, root, mapped_ids, linked, chamber_music, super_genre',
@@ -118,7 +118,7 @@ return [
 
         'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.name',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -127,7 +127,7 @@ return [
         ],
         'gnd_id' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.gnd_id',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.gnd_id',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -136,7 +136,7 @@ return [
         ],
         'base_level' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.base_level',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.base_level',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -149,7 +149,7 @@ return [
         ],
         'root' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.root',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.root',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -162,7 +162,7 @@ return [
         ],
         'mapped_ids' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.mapped_ids',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.mapped_ids',
             'config' => [
                 'type' => 'text',
                 'cols' => 40,
@@ -172,7 +172,7 @@ return [
         ],
         'linked' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.linked',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.linked',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -185,7 +185,7 @@ return [
         ],
         'chamber_music' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.chamber_music',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.chamber_music',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -198,7 +198,7 @@ return [
         ],
         'super_genre' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.super_genre',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbgenre.super_genre',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

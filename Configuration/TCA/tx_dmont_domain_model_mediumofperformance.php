@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation',
+        'title' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation',
         'label' => 'has_orchestra',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,7 +17,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'instrumental_soloists,vocal_soloists',
-        'iconfile' => 'EXT:publisher_db/Resources/Public/Icons/tx_publisherdb_domain_model_mvdbinstrumentation.gif'
+        'iconfile' => 'EXT:dmont/Resources/Public/Icons/tx_publisherdb_domain_model_mvdbinstrumentation.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, has_orchestra, has_choir, instrumental_soloists, vocal_soloists, instrument',
@@ -118,7 +118,7 @@ return [
 
         'has_orchestra' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.has_orchestra',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.has_orchestra',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -131,7 +131,7 @@ return [
         ],
         'has_choir' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.has_choir',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.has_choir',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -144,7 +144,7 @@ return [
         ],
         'instrumental_soloists' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.instrumental_soloists',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.instrumental_soloists',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -153,7 +153,7 @@ return [
         ],
         'vocal_soloists' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.vocal_soloists',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.vocal_soloists',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -162,7 +162,7 @@ return [
         ],
         'instrument' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:publisher_db/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.instrument',
+            'label' => 'LLL:EXT:dmont/Resources/Private/Language/locallang_db.xlf:tx_publisherdb_domain_model_mvdbinstrumentation.instrument',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
